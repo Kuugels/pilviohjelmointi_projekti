@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Foorumi</title>
+    <title>Lentävä Pitsa Foorumi</title>
 
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
@@ -26,6 +26,7 @@
     <script src="app/controllers/topics_list_controller.js"></script>
     <script src="app/controllers/show_topic_controller.js"></script>
     <script src="app/controllers/show_message_controller.js"></script>
+    <script src="app/controllers/plopController.js"></script>
   </head>
   <body ng-app="FoorumApp">
     <nav class="navbar navbar-default">
@@ -38,22 +39,26 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#/">Foorumi</a>
+          <a class="navbar-brand" ng-click="playAudio()" href="#/">Lentävä Pitsa Foorumi</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="#/">Aihealueet</a></li>
+            <li><a href="#/" ng-click="playAudio()">Aihealueet</a></li>
           </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li ng-if="userLoggedIn"><a ng-click="logOut()" style="cursor: pointer">Kirjaudu ulos</a></li>
+          <ul class="nav navbar-nav navbar-right" ng-controller="PlopController">
+            <li><a ng-click="playAudio()" style="cursor: pointer">Plop</a></li>
+            <!--<li ng-if="userLoggedIn"><a ng-click="playAudio()" style="cursor: pointer">Kirjaudu ulos</a></li>
             <li ng-if="!userLoggedIn"><a href="#/login">Kirjaudu sisään</a></li>
-            <li ng-if="!userLoggedIn"><a href="#/register">Rekisteröidy</a></li>
+            <li ng-if="!userLoggedIn"><a href="#/register">Rekisteröidy</a></li>-->
           </ul>
         </div>
       </div>
     </nav>
+    <video autoplay muted loop id="myVideo">
+        <source src="/css/bg.mp4" type="video/mp4">
+      </video>
 
     <div id="main-container" ng-view></div>
   </body>

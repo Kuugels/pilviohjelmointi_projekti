@@ -1,24 +1,19 @@
 <div class="page-header">
-  <h1>Viestin otsikko tähän</h1>
+  <h1>{{title}}</h1>
 </div>
 
 <p>
-  Viestin sisältö tähän
+  {{content}}
 </p>
 
-<h2>1 vastaus</h3>
+<h2>Vastauksia: {{repliesL}}</h3>
 
-<ul class="media-list">
+<ul class="media-list" ng-repeat="reply in replies">
   <li class="media">
-    <div class="media-body">
-      <h4 class="media-heading">Käyttäjätunnus tähän</h4>
-
-      <p>
-        Vastauksen sisältö tähän
-      </p>
-
+    <div class="media-body replyStyle">
+      <h4 class="media-heading">{{reply.content}}</h4>
       <p class="text-muted">
-        1.1.2015 12:00
+        {{reply.createdAt | date : 'dd.MM.yyyy HH.mm'}}
       </p>
     </div>
   </li>
@@ -29,7 +24,7 @@
 <form>
   <div class="form-group">
     <label>Vastaus</label>
-    <textarea class="form-control"></textarea>
+    <textarea class="form-control" ng-model="newReply.content"></textarea>
   </div>
-  <button class="btn btn-success">Lisää vastaus</button>
+  <button class="btn btn-success" ng-click="addReply()">Lisää vastaus</button>
 </form>
